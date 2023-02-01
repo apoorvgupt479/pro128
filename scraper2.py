@@ -3,14 +3,14 @@ import requests
 import pandas as pd
 
 START_URL = (
-    "https://en.wikipedia.org/wiki/List_of_brightest_stars_and_other_record_stars"
+    "https://en.wikipedia.org/wiki/List_of_brown_dwarfs"
 )
 wiki = requests.get(START_URL)
 soup = BeautifulSoup(wiki.text, "html.parser")
 temp_list = []
 for tr in soup.find("table").find_all("tr"):
     td = tr.find_all("td")
-    row = [i.text.rstrip() for i in td]
+    row = [i.text.strip() for i in td]
     temp_list.append(row)
 
 name = []
